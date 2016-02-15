@@ -1,0 +1,16 @@
+#' Population and Area of 297 American Cities.
+#'
+#' A dataset containing the population and size of 297
+#' American Cities.
+#'
+#' @format A data frame with 297 rows and 6 variables:
+#' \describe{
+#'   \item{City}{city name}
+#'   \item{State}{state where city is located}
+#'   \item{Area}{of urban areas in km^2}
+#'   \item{Population}{population}
+#'   \item{Longitude}{longitude}
+#'   \item{Latitude}{latitude}
+#' }
+#' @source \url{https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population}
+"uscities"

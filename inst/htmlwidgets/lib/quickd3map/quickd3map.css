@@ -1,0 +1,81 @@
+.aside  {
+  float: right;
+  margin: 15px;
+}
+
+.stroke {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.fill {
+  fill: #fff;
+}
+
+.country {
+  fill: #ccc;
+  stroke: #fff;
+}
+
+.boundary {
+  fill: none;
+  stroke: #999;
+  stroke-width: 0.1px;
+
+}
+
+.states {
+  fill: #ccc;
+  stroke: #fff;
+}
+
+.symbol {
+  fill: steelblue;
+  fill-opacity: .5;
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+
+.symbol :hover {
+  stroke: #000;
+}
+
+.legend circle {
+  fill: none;
+  stroke: #ccc;
+}
+
+.legend text {
+  fill: #777;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.graticule {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .3;
+  stroke-width: .5px;
+}
+
+.graticule.outline {
+  stroke: #333;
+  stroke-opacity: 1;
+  stroke-width: 1.5px;
+}
+
+.lines {
+    fill: none;
+    stroke: #333;
+    stroke-opacity: 1;
+    stroke-width: 1.5px;
+}
+
+.line {
+    fill: none;
+    stroke: #333;
+    stroke-opacity: 1;
+    stroke-width: 1.5px;
+}
+
