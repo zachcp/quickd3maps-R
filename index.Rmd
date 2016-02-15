@@ -40,20 +40,13 @@ bubblemap(data=uscities,
 ```
 
 
-## Customize Size and Remove legend
+## Control Size and Scale of the Map and Points
 
-```{r}
-bubblemap(data     = uscities,
-          latcol   = "Latitude",
-          loncol   = "Longitude",
-          namecol = "City",
-          mapscale = 800,
-          sizecol  = "Area",
-          legend   = NULL)
-```
+Size of the map can be controlled through the `height` and `width`,
+while the map scaling can be controlled by `mapscale`. Pointsize are determined
+by the square root of the value but the global size scale that maps values to ranges
+when actually plotting use d3's domain and range functions. These both begin at zero but their max values can be accessed with `maxdomain` and `maxrange`.
 
-
-## Control Size and Scale
 
 ```{r}
 bubblemap(data      = uscities,
@@ -64,14 +57,14 @@ bubblemap(data      = uscities,
           width     = 450,
           height    = 300,
           sizecol   = "Area",
-          legend    = TRUE,
+          legend    = NULL,
           maxrange  = 5)
 ```
 
 
 ## Other Maps
 
-In addition to the US map there is also World Map data that allows points to be displayed on a world map.
+In addition to the US map there is also World Map data that allows points to be displayed on a world map. Graticule and sphere are convenience functions. Right now I am considering how/wheterh to support other projections.
 
 ```{r}
 bubblemap(mapdata = "world", 
@@ -82,8 +75,9 @@ bubblemap(mapdata = "world",
           sizecol = "Population",
           maxdomain = 1e6,
           maxrange = 5,
-          legend =  T,
-          namecol = "City"
-)
+          legend =  TRUE,
+          namecol = "City",
+          graticule = TRUE,
+          sphere = TRUE)
 ```
 
