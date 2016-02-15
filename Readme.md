@@ -1,7 +1,7 @@
 ## quickd3map
 
 simple mapping with d3 using htmltools. this is the stub but will expand
-this to allow coloring, sorting  and selecting. see the [main page](http://zachcp.github.io/quickd3map/)
+this to allow coloring, sorting  and selecting. see the [main page](http://zachcp.github.io/quickd3maps-R/)
 
 ```r
 library(quickd3map)
