@@ -1,0 +1,89 @@
+---
+title: "Introduction to the quickd3map package"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+[quickd3map](http://github.com/zachcp/quickd3map) is an [htmlwidget](https://github.com/ramnathv/htmlwidgets)
+ JavaScript/D3 chart library.
+
+## Installation
+
+`devtools::install_github("zachcp/quickd3map")`
+
+## Usage
+
+```{r setup, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+options(dplyr.print_min = 4L, dplyr.print_max = 4L)
+library(quickd3map)
+```
+
+The `quickd3map` pacakge is an `htmlwidget`^[http://www.htmlwidgets.org/] that is based on the `D3.js`^[http://d3js.org/] JavaScript library. Bubblemap is a near-clone of Mike Bostock's `symbol map`^[https://bost.ocks.org/mike/bubble-map/] and the HTMLWidget code is inspired by the `streamgraph package`^[http://hrbrmstr.github.io/streamgraph/]
+
+## Making a Bubblemap
+
+Bubblemaps place a circle at a specific geographic point and draws a circle whose radisu is the square root of the value. Bubblemaps dataframe and requires that the use specify latitute and longitude columns. 
+
+Size can be controlled using the `sizecol` value or can be set to a single standard size using the `size` option.
+
+```{r krbabies, message=FALSE, fig.width=9, fig.cap="'Kr-' names (1880-2013)"}
+library(quickd3map)
+
+bubblemap(data=uscities,
+          latcol="Latitude",
+          loncol="Longitude",
+          namecol = "City",
+          mapscale = 800,
+          sizecol = "Area")
+```
+
+
+## Customize Size and Remove legend
+
+```{r}
+bubblemap(data     = uscities,
+          latcol   = "Latitude",
+          loncol   = "Longitude",
+          namecol = "City",
+          mapscale = 800,
+          sizecol  = "Area",
+          legend   = NULL)
+```
+
+
+## Control Size and Scale
+
+```{r}
+bubblemap(data      = uscities,
+          latcol    = "Latitude",
+          loncol    = "Longitude",
+          namecol   = "City",
+          mapscale  = 400,
+          width     = 450,
+          height    = 300,
+          sizecol   = "Area",
+          legend    = TRUE,
+          maxrange  = 5)
+```
+
+
+## Other Maps
+
+In addition to the US map there is also World Map data that allows points to be displayed on a world map.
+
+```{r}
+bubblemap(mapdata = "world", 
+          data=uscities,
+          latcol="Latitude",
+          loncol="Longitude",
+          mapscale = 100,
+          sizecol = "Population",
+          maxdomain = 1e6,
+          maxrange = 5,
+          legend =  T,
+          namecol = "City"
+)
+```
+
