@@ -1,12 +1,11 @@
 ## quickd3map
 
 simple mapping with d3 using htmltools. this is the stub but will expand
-this to allow coloring, sorting  and selecting.
+this to allow coloring, sorting  and selecting. see the [main page](http://zachcp.github.io/quickd3map/)
 
 ```r
 library(quickd3map)
 
-cities <- read.csv("data-raw/topcities.csv")
 bubblemap(mapdata = "usa",
            data=cities,
            latcol="Latitude",
@@ -17,5 +16,7 @@ bubblemap(mapdata = "usa",
            maxrange = 20)
 
 ```
-#cities
 
+## News
+
+- Version `0.1` released
