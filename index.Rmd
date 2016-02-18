@@ -28,7 +28,7 @@ Bubblemaps place a circle at a specific geographic point and draws a circle whos
 
 Size can be controlled using the `sizecol` value or can be set to a single standard size using the `size` option.
 
-```{r krbabies, message=FALSE, fig.width=9, fig.cap="'Kr-' names (1880-2013)"}
+```{r, message=FALSE, fig.width=9}
 library(quickd3map)
 
 bubblemap(data=uscities,
