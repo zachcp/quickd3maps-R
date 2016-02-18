@@ -86,7 +86,7 @@ HTMLWidgets.widget({
     //////////////////////////////////////////////////////////////
     // World Map
     if (mapdata == "world") {
-      var projection = d3.geo.mercator()
+      var projection = d3.geo.naturalEarth()
                        .scale(params.mapscale)
                        .translate([width / 2, height / 2]);
       var path    = d3.geo.path().projection(projection);

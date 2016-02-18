@@ -1108,7 +1108,7 @@
   function ellipticFi(φ, ψ, m) {
     var r = Math.abs(φ), i = Math.abs(ψ), sinhψ = sinh(i);
     if (r) {
-      var cscφ = 1 / Math.sin(r), cotφ2 = 1 / (Math.tan(r) * Math.tan(r)), b = -(cotφ2 + m * sinhψ * sinhψ * cscφ * cscφ - 1 + m), c = (m - 1) * cotφ2, cotλ2 = .5 * (-b + Math.sqrt(b * b - 4 * c));
+      var cscφ = 1 / Math.sin(r), cotφ2 = 1 / (Math.tan(r) * Math.tan(r)), b = -(cotφ2 + m * (sinhψ * sinhψ * cscφ * cscφ) - 1 + m), c = (m - 1) * cotφ2, cotλ2 = .5 * (-b + Math.sqrt(b * b - 4 * c));
       return [ ellipticF(Math.atan(1 / Math.sqrt(cotλ2)), m) * sgn(φ), ellipticF(Math.atan(asqrt((cotλ2 / cotφ2 - 1) / m)), 1 - m) * sgn(ψ) ];
     }
     return [ 0, ellipticF(Math.atan(sinhψ), 1 - m) * sgn(ψ) ];
