@@ -6,7 +6,7 @@ dependencies:
 - name: d3geo
   version: 0.2.16
   src: htmlwidgets/lib/d3
-  script: d3.geo.projection.min1.js
+  script: d3.geo.projection.min.js
 - name: topojson
   version: 1.6.124
   src: htmlwidgets/lib/topojson
