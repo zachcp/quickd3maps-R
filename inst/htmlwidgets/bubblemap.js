@@ -1,9 +1,8 @@
-var prms, gjson, pnts, pth, prj;
+var prms, gjson, pnts, pth, prj, rd;
 
 HTMLWidgets.widget({
 
   name: 'bubblemap',
-
   type: 'output',
 
   initialize: function(el, width, height) {
@@ -45,15 +44,46 @@ HTMLWidgets.widget({
     var radius = d3.scale.sqrt()
         .domain([0, params.maxdomain])
         .range( [0, params.maxrange]);
-
+    rd=radius;
     var graticule = d3.geo.graticule();
     var formatNumber = d3.format(",.0f");
     var geojson = params.rawmapdata;
     var mapdata = params.mapdata;
 
 
+    ///////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
+    // NYC Map
+    if (mapdata == "nyc") {
+
+      var projection = d3.geo.mercator()
+          .center([-73.94, 40.70])
+          .scale(50000)
+          .translate([width / 2, height / 2]);
+
+      var path    = d3.geo.path().projection(projection);
 
 
+      if (params.graticule) {
+        svg.append("path")
+          .datum(graticule)
+          .attr("class", "graticule")
+          .attr("d", path);
+      }
+
+      svg.append("g")
+        .attr("id", "boroughs")
+      .selectAll(".state")
+        .data(geojson.features)
+      .enter().append("path")
+         .attr("class", "states")
+          .attr("d", path);
+    }
+
+
+    ///////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
+    // USA Map
     if (mapdata == "usa") {
 
       var projection = d3.geo.albersUsa()
@@ -91,7 +121,6 @@ HTMLWidgets.widget({
                        .translate([width / 2, height / 2]);
       var path    = d3.geo.path().projection(projection);
       var center  = projection([0, 20]);
-
 
       if (params.graticule) {
         svg.append("path")
@@ -185,73 +214,3 @@ HTMLWidgets.widget({
       this.drawGraphic(el, instance.params, width, height);
   }
 });
-
-
-/*    // Basic Map Setup Goes Here
-  	var samples = {{geojson|string|safe}};
-    var geojson = {{map_data|string|safe}};
-    var radius = d3.scale.sqrt()
-        .domain([0, 1e{{scale_exp}}])
-        .range([0, 10]);
-    var projection = d3.geo.albers()
-		{% if center %}
-			 .center( {{center}} )
-		{% endif %}
-      .scale(800);
-    var path = d3.geo.path()
-      .projection(projection);
-	var center = projection([ 0, 20]);
-    var svg = d3.select("#map")
-      .append("svg")
-      .append("g")
-      .attr("width", width)
-      .attr("height", height);
-    svg.append("path")
-          .attr("class", "states")
-          .datum(topojson.feature(geojson, geojson.objects.states))
-          .attr("d", path);
-     svg.selectAll(".symbol")
-            .data(samples.features)
-            .enter().append("path")
-              .attr("class", "symbol")
-     .attr("d", path.pointRadius(function(d) { return radius(1000) }));
-	//Selection Shorthands go here
-    var map  = svg.append("path").attr("class", "state");
-	var points = svg.selectAll(".symbol")
-	          .data(samples.features);
-
-    // Functions Go Here
-	d3.selectAll("select").on("change", function () {updateSize(this.value) });
-
-    //this is where the update size code goes
-    function updateSize(value) {
-        // join new data with old elements
-        var symbol = svg.selectAll(".symbol")
-              .data(samples.features);
-        // UPDATE
-        symbol.attr("d", path.pointRadius(function(d) { return radius(d.properties[value]); }))
-*/
-
-/*
-	{% if title %}
-		 <h2> {{ title }} </h2>
-	{% else %}
-		<h2> quickD3map</h2>
-		<h4> default behavior is pan and zoom</h4>
-	{% endif %}
-
-	{% if columns%}
-		 <p>Scale by colum values:
-		 <select id="select" >
-			 {% for col in columns %}
-		        <option value="{{col}}"> {{col}} </option>
-		     {% endfor %}
-		 </select>
-		 if the circles are too small or big try changing the scale_exp value.
-		 </p>
-	{% endif %}
-
-	{% block body%}
-		 <div id="map"></div>
-	{% endblock %}*/
-
