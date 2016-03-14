@@ -63,7 +63,6 @@ HTMLWidgets.widget({
 
       var path    = d3.geo.path().projection(projection);
 
-
       if (params.graticule) {
         svg.append("path")
           .datum(graticule)
@@ -79,7 +78,6 @@ HTMLWidgets.widget({
          .attr("class", "states")
           .attr("d", path);
     }
-
 
     ///////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////
