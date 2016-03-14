@@ -36,6 +36,9 @@ bubblemap <- function(#pointdata
   } else if (mapdata == "world") {
     worldmap     <- system.file("mapdata", "world-110m.json", package = "quickd3map")
     rawmapdata   <- jsonlite::fromJSON(worldmap,simplifyVector = FALSE, flatten = FALSE)
+  } else if (mapdata == "nyc") {
+    nycmap     <- system.file("mapdata", "nyc.json", package = "quickd3map")
+    rawmapdata   <- jsonlite::fromJSON(nycmap,simplifyVector = FALSE, flatten = FALSE)
   }
 
   # check size
@@ -46,7 +49,6 @@ bubblemap <- function(#pointdata
   }
 
 
-  # forward options using x
   params = list(
     data       = data,
     mapdata    = mapdata,
@@ -92,3 +94,5 @@ renderBubblemap <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   shinyRenderWidget(expr, bubblemapOutput, env, quoted = TRUE)
 }
+
+
