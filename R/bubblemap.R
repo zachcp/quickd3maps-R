@@ -13,6 +13,7 @@ bubblemap <- function(#pointdata
                        namecol  = NULL,
                        sizecol  = NULL,
                        size     = 5,
+                       pointopacity = 0.5,
                        defaultcolor="#D3D3D3",
                        #mapddata
                        mapdata = "usa",
@@ -63,6 +64,7 @@ bubblemap <- function(#pointdata
     loncol     = loncol,
     namecol    = namecol,
     sizecol    = sizecol,
+    pointopacity = pointopacity,
     top        = top,
     bottom     = bottom,
     left       = left,

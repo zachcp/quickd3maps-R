@@ -168,6 +168,7 @@ HTMLWidgets.widget({
           function(d) {return "translate(" + projection([+d[params.loncol],+d[params.latcol]]) + ")";})
       .attr("r", function(d) {return radius(+d.pointsize)})
       .attr("fill", function(d) {return d.colors})
+      .attr("fill-opacity", params.pointopacity)
     .append("title")
       .text(function(d) {
         if (params.sizecol) {

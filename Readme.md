@@ -13,7 +13,8 @@ bmap <- bubblemap(mapdata = "usa",
            mapscale = 800,
            sizecol = "Area",
            maxdomain = 1e3,
-           maxrange = 20)
+           maxrange = 20,
+           pointopacity=0.1)
 
 add_colors_categorical(bmap,  colorcol="State")
 ```
