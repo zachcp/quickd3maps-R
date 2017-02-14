@@ -6,7 +6,7 @@ this to allow coloring, sorting  and selecting. see the [main page](http://zachc
 ```r
 library(quickd3map)
 
-bubblemap(mapdata = "usa",
+bmap <- bubblemap(mapdata = "usa",
            data=uscities,
            latcol="Latitude",
            loncol="Longitude",
@@ -15,6 +15,7 @@ bubblemap(mapdata = "usa",
            maxdomain = 1e3,
            maxrange = 20)
 
+add_colors(bmap,  colorcol="State")
 ```
 
 ## News

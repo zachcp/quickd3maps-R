@@ -13,6 +13,7 @@ bubblemap <- function(#pointdata
                        namecol  = NULL,
                        sizecol  = NULL,
                        size     = 5,
+                       defaultcolor="#D3D3D3",
                        #mapddata
                        mapdata = "usa",
                        maxdomain = 1000,
@@ -47,6 +48,10 @@ bubblemap <- function(#pointdata
   } else {
     data$pointsize <- data[[sizecol]]
   }
+
+  # set default color values
+  data$colors <- defaultcolor
+
 
 
   params = list(

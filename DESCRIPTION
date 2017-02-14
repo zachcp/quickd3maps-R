@@ -5,6 +5,8 @@ Authors@R: person("Zachary", "Charlop-Powers", email = "zcharlop@rockefeller.edu
 Description: Draw Maps with D3
 Depends:
     R (>= 3.2.3)
+Imports:
+    leaflet
 License: MIT
 LazyData: true
 RoxygenNote: 5.0.1
