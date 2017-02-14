@@ -1,27 +1,66 @@
-#' add_colors
+#' add_colors_categorical
 #'
-#' @importFrom  leaflet colorNumeric
-#' @importFrom  leaflet colorBin
-#' @importFrom  leaflet colorQuantile
 #' @importFrom  leaflet colorFactor
 #'
 #' @export
-add_colors <- function(bmap, colorcol, datatype="categorical" ) {
-  # "categorical"
-  # "continuous"
-  # "binned"
-  # "quantile"
+add_colors_categorical <- function(bmap, colorcol, palette= NULL) {
 
-  #colorFactor <- function(palette, domain, levels = NULL, ordered = FALSE,
-  #                        na.color = "#808080", alpha = FALSE, reverse = FALSE) {
-
+  # set default palette
+  if (is.null(palette)) palette <- "RdYlBu"
 
   data      <- bmap$x$data
-  newcolors <- colorFactor(palette="RdYlBu", domain = data[[colorcol]])
-  print(newcolors)
+  newcolors <- colorFactor(palette=palette, domain = data[[colorcol]])
+
   bmap$x$data$colors <- newcolors(data[[colorcol]])
-  print(bmap$x$data$colors)
   bmap
 }
 
 
+#' add_colors_quintile
+#'
+#' @importFrom  leaflet colorQuantile
+#'
+#' @export
+add_colors_quintile <- function(bmap, colorcol, palette= NULL) {
+   # set default palette
+  if (is.null(palette))  palette <- "RdYlBu"
+
+  data      <- bmap$x$data
+  newcolors <- colorQuantile(palette=palette, domain = data[[colorcol]])
+
+  bmap$x$data$colors <- newcolors(data[[colorcol]])
+  bmap
+}
+
+
+#' add_colors_continuous
+#'
+#' @importFrom  leaflet colorNumeric
+#'
+#' @export
+add_colors_continuous <- function(bmap, colorcol, palette= NULL) {
+  # set darault palette
+  if (is.null(palette))  palette <- "RdYlBu"
+
+  data      <- bmap$x$data
+  newcolors <- colorNumeric(palette=palette, domain = data[[colorcol]])
+
+  bmap$x$data$colors <- newcolors(data[[colorcol]])
+  bmap
+}
+
+#' add_colors_binned
+#'
+#' @importFrom  leaflet colorBin
+#'
+#' @export
+add_colors_binned <- function(bmap, colorcol, palette= NULL) {
+  # set darault palette
+  if (is.null(palette))  palette <- "RdYlBu"
+
+  data      <- bmap$x$data
+  newcolors <- colorBin(palette=palette, domain = data[[colorcol]])
+
+  bmap$x$data$colors <- newcolors(data[[colorcol]])
+  bmap
+}

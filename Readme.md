@@ -15,7 +15,7 @@ bmap <- bubblemap(mapdata = "usa",
            maxdomain = 1e3,
            maxrange = 20)
 
-add_colors(bmap,  colorcol="State")
+add_colors_categorical(bmap,  colorcol="State")
 ```
 
 ## News
