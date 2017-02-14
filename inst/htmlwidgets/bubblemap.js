@@ -169,6 +169,8 @@ HTMLWidgets.widget({
       .attr("r", function(d) {return radius(+d.pointsize)})
       .attr("fill", function(d) {return d.colors})
       .attr("fill-opacity", params.pointopacity)
+      .attr("stroke", params.stroke)
+      .attr("stroke-width", params.strokewidth)
     .append("title")
       .text(function(d) {
         if (params.sizecol) {

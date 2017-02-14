@@ -33,8 +33,8 @@
 .symbol {
   //fill: steelblue;
   //fill-opacity: .5;
-  stroke: #fff;
-  stroke-width: 0.5px;
+  //stroke: #fff;
+  //stroke-width: 0.5px;
 }
 
 .symbol :hover {
